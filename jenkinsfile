@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+
+    environment {
+        // Define environment variables here if needed
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from the repository
+                git url: 'https://github.com/your-repo/your-project.git', branch: 'main'
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    // Run your build commands
+                    bat 'echo Building the project...'
+                    bat 'build-command.bat'  // Replace with your actual build command
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    // Run your test commands
+                    bat 'echo Running tests...'
+                    bat 'test-command.bat'  // Replace with your actual test command
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    // Run your deployment commands
+                    bat 'echo Deploying the project...'
+                    bat 'deploy-command.bat'  // Replace with your actual deploy command
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Actions that run always, e.g., cleanup
+            bat 'echo Cleaning up...'
+        }
+        success {
+            // Actions that run only if the build succeeds
+            bat 'echo Build succeeded!'
+        }
+        failure {
+            // Actions that run only if the build fails
+            bat 'echo Build failed!'
+        }
+    }
+}
