@@ -44,6 +44,12 @@
             text-decoration: none;
             color: #333;
         }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -52,19 +58,35 @@
     </header>
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" onclick="showSection('home')">Home</a></li>
+            <li><a href="#about" onclick="showSection('about')">About</a></li>
+            <li><a href="#services" onclick="showSection('services')">Services</a></li>
+            <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
         </ul>
     </nav>
     <main>
-        <h2>Home</h2>
-        <p>This is a simple HTML index page with a header, navigation, and footer.</p>
+        <section id="home" class="section active">
+            <h2>Home</h2>
+            <p>This is the Home section.</p>
+        </section>
+        <section id="about" class="section">
+            <h2>About</h2>
+            <p>This is the About section.</p>
+        </section>
+        <section id="services" class="section">
+            <h2>Services</h2>
+            <p>This is the Services section.</p>
+        </section>
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>This is the Contact section.</p>
+        </section>
     </main>
     <footer>
         <p>&copy; 2024 My Website</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
+
 
